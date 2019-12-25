@@ -12,14 +12,16 @@ class Template {
         $content = '<meta charset="utf-8">';
         $content .= '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
         $content .= $this->addTitleTag($title);
-        //$content .= $this->addCSS("bootstrap/css/bootstrap");
-        $content .= '<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">';
-        $content .= $this->addCSS($defaultCSS);
-        $content .= $this->addFavicon("test");
 
-        //$content .= $this->addJS("tinymce/tinymce.min");
-        $content .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.1.2/tinymce.min.js"></script>';
-        $content .= '<script>tinymce.init({ selector: "textarea#note" });</script>';
+        $content .= $this->addCSS(false, "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css");
+        $content .= $this->addCSS(true, $defaultCSS);
+
+        $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.1.2/tinymce.min.js");
+        $content .= '<script>tinymce.init({ selector: "textarea#note", branding: false, height: "500" });</script>';
+        
+        $content .= $this->addAppleAppTitle("DMS");
+        $content .= $this->addAppleStatusBarStyle("red");
+        $content .= $this->addAppleAppUI("false");
 
         return $content;
     }
@@ -31,12 +33,12 @@ class Template {
         $content .= '<div class="collapse navbar-collapse" id="navbarSupportedContent">';
         $content .= '<ul class="navbar-nav ml-auto mt-2 mt-lg-0">';
         $content .= '<li class="nav-item dropdown">';
-        $content .= '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USERNAME</a>';
+        $content .= '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'. $_SESSION["dms_user_realname"] .'</a>';
         $content .= '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">';
         $content .= $this->addDropdownItem("index.php?page=profile&action=view", "Profiel");
         $content .= $this->addDropdownItem("index.php?page=profile&action=password", "Wachtwoord Wijziggen");
         $content .= $this->addDropdownSeperator();
-        $content .= $this->addDropdownItem("index.php?page=user&action=sign-out", "Uitloggen");
+        $content .= $this->addDropdownItem("sign-out.php", "Uitloggen");
         $content .= '</div>';
         $content .= '</li>';
         $content .= '</ul>';
@@ -48,10 +50,11 @@ class Template {
 
     public function loadSidebar() {
         $content = '<div class="bg-light border-right" id="sidebar-wrapper">';
-        $content .= '<div class="sidebar-heading">Start Bootstrap </div>';
+        $content .= '<div class="sidebar-heading">DMS</div>';
         $content .= '<div class="list-group list-group-flush">';
         $content .= $this->addSidebarItem("dashboard", "Home");
         $content .= $this->addSidebarItem("notes&action=view", "Notes");
+        $content .= $this->addSidebarItem("credits", "Credits");
         $content .= '</div>';
         $content .= '</div>';
 
@@ -60,12 +63,8 @@ class Template {
     }
 
     public function loadFooter() {
-        //$content = $this->addJS("jquery/jquery");
-        //$content .= $this->addJS("bootstrap/js/bootstrap.bundle");
-
-        $content .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>';
-        $content .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>';
-
+        $content = $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js");
+        $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js");
         $content .= '<script>$("#menu-toggle").click(function(e) { e.preventDefault(); $("#wrapper").toggleClass("toggled"); });</script>';
 
         return $content;
@@ -101,19 +100,24 @@ class Template {
         return '<a role="button" class="btn btn-primary btn-sm" href="'. $location .'">'. $title .'</a>';
     }
 
-
-    // LDKKKD
-
     private function addSidebarItem($location, $title) {
         return '<a href="index.php?page='. $location .'" class="list-group-item list-group-item-action bg-light">'. $title .'</a>';
     }
 
-    private function addCSS($filename) {
-        return '<link href="'. $this->path . '/' . $filename .'.css" rel="stylesheet">';
+    private function addCSS($isLocal, $filename) {
+        if($isLocal === true) {
+            return '<link href="'. $this->path . '/' . $filename .'.css" rel="stylesheet">';
+        } else {
+            return '<link href="'. $filename .'" rel="stylesheet">';
+        } 
     }
 
-    private function addJS($filename) {
-        return '<script src="'. $this->path . '/' .  $filename .'.js"></script>';
+    private function addJS($isLocal, $filename) {
+        if($isLocal === true) {
+            return '<script src="'. $this->path . '/' .  $filename .'.js"></script>';
+        } else {
+            return '<script src="'. $filename .'"></script>';
+        }
     }
 
     private function addDropdownItem($location, $title) {

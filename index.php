@@ -1,12 +1,9 @@
 <?php include "autoload.php"; ?>
 <?php session_start(); ?>
-<?php //if($user->doSignInCheck() === true) { header("Location: index.php?page=sign-in"); } ?>
-<?php //echo $user->doSignInCheck(); ?>
+<?php if(!$user->doSignInCheck() === true) { header("Location: sign-in.php"); } ?>
 <?php
 if(isset($_GET["page"]) && !empty($_GET["page"])) {
     if($_GET["page"] === "dashboard") {
-
-        //$controller->load("test");
 
         $views->load("global/head");
         $views->load("dashboard");
@@ -14,10 +11,7 @@ if(isset($_GET["page"]) && !empty($_GET["page"])) {
 
     } else if($_GET["page"] === "notes") {
         include "app/routes/notes.php";
-        
-    } else if($_GET["page"] === "user") {
-        include "app/routes/user.php";
-        
+
     } else if($_GET["page"] === "profile") {
         include "app/routes/profile.php";
         

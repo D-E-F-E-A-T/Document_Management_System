@@ -1,14 +1,12 @@
 <?php
 if(isset($_GET["action"]) && !empty($_GET["action"])) {
-    if($_GET["action"] === "view") {
+    if($_GET["action"] === "dashboard") {
 
         $views->load("global/head");
-        $views->load("profile/view");
+        $views->load("admin/dashboard");
         $views->load("global/footer");
 
     } else if($_GET["action"] === "password") {
-
-        $controller->load("profile/password");
 
         $views->load("global/head");
         $views->load("profile/password");

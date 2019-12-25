@@ -22,11 +22,7 @@ class User {
         session_destroy();
     }
 
-    private function passwordHash($password) {
-        return hash("sha512", $password);
-    }
-
-    private function inputHashing($password) {
+    public function passwordHash($password) {
         return hash("sha512", $password);
     }
 
@@ -53,24 +49,26 @@ class User {
     }
 
     public function doSignInCheck() {
-        // <?php if(!isset($_SESSION["logged-in"])) { header('Location: login.php'); }
+        if(isset($_SESSION["dms_logged_in"])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function setSession($key, $value) {
         $_SESSION["{$key}"] = $value;
     }
 
-    // LOG AND BAN
-    private function logActivity() {
-        /*
-        Insert:
-            - UserAgent
-            - Datetime
-            - IP
-            - Username
-            - Num. of logins
-        */
-    }
+    public function logActivity($username) {
+        global $mysql;
 
-    private function banIP() { }
+        $logIP = $_SERVER['REMOTE_ADDR'];
+        $logUserAgent = $_SERVER['HTTP_USER_AGENT'];
+        $logUsername = $username;
+        $logDateTime = date("H:i:s d-m-Y"); 
+
+        $mysql->query("INSERT INTO dms_log_signin (ip, useragent, username, dt_last) VALUES ('{$logIP}', '{$logUserAgent}', '{$logUsername}', '{$logDateTime}')");
+    }
 }
+?>

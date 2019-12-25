@@ -45,7 +45,11 @@ class Notes {
 
     public function makeNoteSave($title, $note) {
         global $mysql;
-        $mysql->query("INSERT INTO dms_note (title, content) VALUES ({$title}', '{$note}')");
+        global $dateTime;
+        
+        $timestamp = $dateTime->get();
+        
+        $mysql->query("INSERT INTO dms_note (title, content, dt_created, dt_last_edit) VALUES ('{$title}', '{$note}', '{$timestamp}', '{$timestamp}')");
     }
 
     public function editNoteForm($id) {
@@ -62,24 +66,36 @@ class Notes {
             $content .= '</div>';
 
             $content .= '<div class="form-row">';
-            $content .= '<div class="form-group col"><label for="note">Note</label><textarea class="form-control" name="note" id="note">'. htmlspecialchars($x["content"]) .'</textarea></div>';
+            $content .= '<div class="form-group col"><label for="note">Note</label><textarea class="form-control" name="note" id="note">'. htmlspecialchars(base64_decode($x["content"])) .'</textarea></div>';
             $content .= '</div>';
         }
         
         $content .= '<button type="submit" class="btn btn-primary">Save</button></form>';
-
         return $content;
-
     }
 
     public function editNoteSave($title, $note, $id) {
         global $mysql;
-        $mysql->query("UPDATE dms_note SET title = '{$title}', content = '{$note}' WHERE id = '{$id}'");
+        global $dateTime;
+        global $baseSixtyFour;
+        
+        $htmlSpecialNote = base64_encode($note);
+
+        
+        $timestamp = $dateTime->get();
+        $q = "UPDATE dms_note SET title = '{$title}', content = '{$htmlSpecialNote}', dt_last_edit = '{$timestamp}' WHERE id = '{$id}'";
+        $mysql->query($q);
+
+        return $q;
     }
 
     public function deleteNote($id) {
         global $mysql;
+        global $dateTime;
+        
+        $timestamp = $dateTime->get();
+
         $mysql->query("UPDATE dms_note SET archive = 1 WHERE id = '{$id}'");
     }
-
 }
+?>

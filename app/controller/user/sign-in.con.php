@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $user->loginCorrect();
     } else {
         echo $user->loginError();
+        $user->logActivity($_POST["username"]);
     }
 }
 ?>
