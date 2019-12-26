@@ -3,6 +3,8 @@ class Template {
     private $path;
     private $language;
 
+
+    // TODO: Savely remove $language variable
     public function __construct($path, $language) {
         $this->path = $path;
         $this->language = $language;
@@ -12,58 +14,64 @@ class Template {
         $content = '<meta charset="utf-8">';
         $content .= '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
         $content .= $this->addTitleTag($title);
-
+        $content .= $this->addThemeColor("#292b2c");
+        $content .= $this->addAppleWebAppTitle("DMS");
+        $content .= $this->addAppleSafariIcon("#000000");
+        $content .= $this->addAppleIcon("180");
+        $content .= $this->addAppleIconPre("180");
+        $content .= $this->addFavicon("16");
+        $content .= $this->addFavicon("32");
         $content .= $this->addCSS(false, "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css");
         $content .= $this->addCSS(true, $defaultCSS);
-
         $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.1.2/tinymce.min.js");
         $content .= '<script>tinymce.init({ selector: "textarea#note", branding: false, height: "500" });</script>';
-        
-        $content .= $this->addAppleAppTitle("DMS");
-        $content .= $this->addAppleStatusBarStyle("red");
-        $content .= $this->addAppleAppUI("false");
 
         return $content;
     }
 
-    public function loadNav() {
-        $content = '<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">';
-        $content .= '<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>';
-        $content .= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>';
-        $content .= '<div class="collapse navbar-collapse" id="navbarSupportedContent">';
-        $content .= '<ul class="navbar-nav ml-auto mt-2 mt-lg-0">';
-        $content .= '<li class="nav-item dropdown">';
-        $content .= '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'. $_SESSION["dms_user_realname"] .'</a>';
+    public function loadheader() {
+        $content = '<header>';
+        $content .= '<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">';
+        $content .= '<span class="navbar-brand mb-0 h1"><img src="app/assets/img/icon.svg" width="30" height="30" class="d-inline-block align-top" alt=""> DMS</span>';
+
+        $content .= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">';
+        $content .= '<span class="navbar-toggler-icon"></span>';
+        $content .= '</button>';
+
+        $content .= '<div class="collapse navbar-collapse" id="navbarCollapse">';
+
+        $content .= '<ul class="navbar-nav mr-auto">';
+        $content .= $this->addNavigationItem("dashboard", "Home");
+        $content .= $this->addNavigationItem("notes&action=view", "Notes");
+        $content .= '</ul>';
+
+        //$content .= '<li class="nav-item dropdown">';
+        $content .= '<a class="btn btn-outline-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'. $_SESSION["dms_user_realname"] .'</a>';
+        
         $content .= '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">';
         $content .= $this->addDropdownItem("index.php?page=profile&action=view", "Profiel");
         $content .= $this->addDropdownItem("index.php?page=profile&action=password", "Wachtwoord Wijziggen");
         $content .= $this->addDropdownSeperator();
         $content .= $this->addDropdownItem("sign-out.php", "Uitloggen");
         $content .= '</div>';
-        $content .= '</li>';
-        $content .= '</ul>';
+
+        //$content .= '</li>';
         $content .= '</div>';
         $content .= '</nav>';
+        $content .= '</header>';
 
         return $content;
     }
 
-    public function loadSidebar() {
-        $content = '<div class="bg-light border-right" id="sidebar-wrapper">';
-        $content .= '<div class="sidebar-heading">DMS</div>';
-        $content .= '<div class="list-group list-group-flush">';
-        $content .= $this->addSidebarItem("dashboard", "Home");
-        $content .= $this->addSidebarItem("notes&action=view", "Notes");
-        $content .= $this->addSidebarItem("credits", "Credits");
-        $content .= '</div>';
-        $content .= '</div>';
-
-        return $content;
-
+    private function addNavigationItem($location, $title) {
+        return '<li class="nav-item"><a class="nav-link" href="index.php?page='. $location .'">'. $title .'</a></li>';
     }
 
     public function loadFooter() {
-        $content = $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js");
+        $content = '<footer class="footer">';
+        $content .= '<div class="container"><span class="text-muted">DMS (Document Management System) by Bastiaan de hart</span></div>';
+        $content .= '</footer>';
+        $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js");
         $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js");
         $content .= '<script>$("#menu-toggle").click(function(e) { e.preventDefault(); $("#wrapper").toggleClass("toggled"); });</script>';
 
@@ -93,25 +101,21 @@ class Template {
 
     // DEFAULT ELLEMENTS
     public function addTitle($title) {
-        return '<h1 class="mt-4">'. $title .'</h1>';
+        return '<h1 class="mt-5">'. $title .'</h1>';
     }
 
     public function addButton($location, $title) {
         return '<a role="button" class="btn btn-primary btn-sm" href="'. $location .'">'. $title .'</a>';
     }
-
-    private function addSidebarItem($location, $title) {
-        return '<a href="index.php?page='. $location .'" class="list-group-item list-group-item-action bg-light">'. $title .'</a>';
-    }
-
+    // FIXME: Add path param.
     private function addCSS($isLocal, $filename) {
         if($isLocal === true) {
-            return '<link href="'. $this->path . '/' . $filename .'.css" rel="stylesheet">';
+            return '<link href="'. $this->path . '/' . $filename .'.min.css" rel="stylesheet">';
         } else {
             return '<link href="'. $filename .'" rel="stylesheet">';
         } 
     }
-
+    // FIXME: Add path param.
     private function addJS($isLocal, $filename) {
         if($isLocal === true) {
             return '<script src="'. $this->path . '/' .  $filename .'.js"></script>';
@@ -132,31 +136,36 @@ class Template {
         return '<title>'. $title .'</title>';
     }
 
-    // FAVICON
-
-    private function addFavicon($filename, &$extension = 'png') {
-        return '<link rel="shortcut icon" href="'. $this->path . '/' . $filename . '.' . $extension .'">';
-    }
-
-    // APPLE
-
-    private function addAppleAppTitle($title) {
-        return '<meta name="apple-mobile-web-app-title" content="'. $title .'">';
-    }
-
-    private function addAppleStatusBarStyle($color) {
-        return '<meta name="apple-mobile-web-app-status-bar-style" content="'. $color .'">';
-    }
-
-    private function addAppleAppUI($boolean) {
-        return '<meta name="apple-mobile-web-app-capable" content="'. $boolean .'" />';
-    }
-
-
     // TODO: TINYMCE FUNC
 
     private function addTINYMCE($id, &$content = "") {
 
+    }
+    // FIXME: Add path param.
+    private function addFavicon($size) {
+        return '<link rel="icon" type="image/png" sizes="'. $size .'x'. $size .'" href="app/assets/img/favicon/favicon-'. $size .'x'. $size .'.png">';
+    }
+
+    // FIXME: Add path param.
+    private function addAppleIcon($size) {
+        return '<link rel="apple-touch-icon" sizes="'. $size .'x'. $size .'" href="app/assets/img/apple/apple-touch-icon.png">';
+    }
+
+    private function addAppleIconPre($size) {
+        return '<link rel="apple-touch-icon-precomposed" sizes="'. $size .'x'. $size .'" href="app/assets/img/apple/apple-touch-icon-precomposed.png">';
+    }
+
+    // FIXME: Add path param.
+    private function addAppleSafariIcon($color) {
+        return '<link rel="mask-icon" href="app/assets/img/apple/safari-pinned-tab.svg" color="'. $color .'">';
+    }
+
+    private function addAppleWebAppTitle($title) {
+        return '<meta name="apple-mobile-web-app-title" content="'. $title .'">';
+    }
+
+    private function addThemeColor($color) {
+        return '<meta name="theme-color" content="'. $color .'">';
     }
 }
 ?>

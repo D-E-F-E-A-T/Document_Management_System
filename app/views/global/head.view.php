@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="<?php echo $template->getLanguage(); ?>">
-<head><?php echo $template->loadHead("css/app", "TEST APP"); ?></head>
+<head><?php echo $template->loadHead("css/app", "DMS"); ?></head>
 <body>
-<div class="d-flex" id="wrapper">
-<?php echo $template->loadSidebar(); ?>
-<div id="page-content-wrapper">
-<?php echo $template->loadNav(); ?>
-<div class="container-fluid">
+<?php echo $template->loadheader(); ?>
+<main role="main" class="container">

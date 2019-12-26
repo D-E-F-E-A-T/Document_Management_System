@@ -1,5 +1,12 @@
 <?php
-include "config.php";
+$debug              = true;
+
+$mysqlHost          = "mysql";
+$mysqlUsername      = "root";
+$mysqlPassword      = "root";
+$mysqlDatabase      = "notes";
+
+$language           = "en";
 
 if ($debug === true) {
     ini_set('display_errors', 1);
@@ -9,8 +16,8 @@ if ($debug === true) {
 
 foreach (glob("app/class/*.php") as $file) { include $file; }
 
-$mysql          = new mysqli($sqlHost, $sqlUsername, $sqlPassword, $sqlDatabase);
-$template       = new Template("app/assets", $lang);
+$mysql          = new mysqli($mysqlHost, $mysqlUsername, $mysqlPassword, $mysqlDatabase);
+$template       = new Template("app/assets", $language);
 $views          = new Views();
 $controller     = new Controller();
 $profile        = new Profile();
@@ -18,6 +25,6 @@ $notes          = new Notes();
 $profile        = new Profile();
 $user           = new User();
 $bootstrap      = new Bootstrap();
-$dateTime       = new DT($lang);
-$baseSixtyFour  = new Base64();
+$dateTime       = new DT($language);
+$b64            = new Base64();
 ?>

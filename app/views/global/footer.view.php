@@ -1,6 +1,4 @@
-</div>
-</div>
-</div>
+</main>
 <?php echo $template->loadFooter(); ?>
 </body>
 </html>

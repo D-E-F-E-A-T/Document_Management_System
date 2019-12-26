@@ -15,6 +15,7 @@ class Bootstrap {
         $content .= '<div class="card-body">';
         $content .= '<h5 class="card-title">'. $title .'</h5>';
         $content .= '<p class="card-text">'. $text .'</p>';
+        // TODO: replace with function addButton()
         $content .= '<a href="'. $hrefUrl .'" class="btn btn-primary">'. $hrefContent .'</a>';
         $content .= '</div>';
         $content .= '</div>';

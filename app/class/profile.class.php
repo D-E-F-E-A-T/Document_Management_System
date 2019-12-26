@@ -16,8 +16,7 @@ class Profile {
 
     public function passwordChange($username, $passwordCurrent, $passwordNew, $passwordNewRepeat) {
         // TODO
-        global $mysql;
-        global $user;
+        global $mysql, $user;
         $hasedPassword = $user->passwordHash($passwordNew);
 
         if($passwordNew == $passwordNewRepeat) {
