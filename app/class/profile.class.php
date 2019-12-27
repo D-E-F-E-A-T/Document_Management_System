@@ -5,7 +5,8 @@ class Profile {
     public function getProfile($uid) {
 
     }
-
+    // TODO: Edit profile
+    // MUSTHAVE: Naam veranderen & email
     public function editProfileForm($uid) {
 
     }
@@ -30,21 +31,16 @@ class Profile {
     }
 
     public function passwordChangeForm() {
+        global $bootstrap;
+
         $content = '<form action="" method="POST">';
-
-        //$content .= '<div class="form-row">';
-        //$content .= '<div class="form-group col"><label for="current_password">Current password</label><input type="password" class="form-control" name="current_password" id="current_password" placeholder="Current password"></div>';
-        //$content .= '</div>';
-
-        $content .= '<div class="form-row">';
+        $content .= $bootstrap->addFormRow("start");
         $content .= '<div class="form-group col"><label for="new_password_1">'. LANG_PROFILE_PASSWORD_new_password .'</label><input type="password" class="form-control" name="new_password_1" id="new_password_1" placeholder="'. LANG_PROFILE_PASSWORD_new_password .'"></div>';
-        $content .= '</div>';
-
-        $content .= '<div class="form-row">';
+        $content .= $bootstrap->addFormRow("end");
+        $content .= $bootstrap->addFormRow("start");
         $content .= '<div class="form-group col"><label for="new_password_2">'. LANG_PROFILE_PASSWORD_new_password_repeat .'</label><input type="password" class="form-control" name="new_password_2" id="new_password_2" placeholder="'. LANG_PROFILE_PASSWORD_new_password_repeat .'"></div>';
-        $content .= '</div>';
-
-        $content .= '<button type="submit" class="btn btn-primary">'. LANG_PROFILE_PASSWORD_new_password_btn .'</button></form>';
+        $content .= $bootstrap->addFormRow("end");
+        $content .= $bootstrap->addButtonSubmit(LANG_PROFILE_PASSWORD_new_password_btn);
         return $content;
     }
 }

@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Version: 0.0.5
+- FIX: Date Time formats
+- FIX: Dutch translations
+- FIX: Safely removed the $language from the templace.class.php file. This variable was needed in v0.0.1 but now we're working with the language class
+- ADDED: Path cladss for easier managing paths on the server.
+- ADDED: Final version of the DATABASE
+- UPDATED: README.md
+
 ## Version: 0.0.4
 - ADDED: Multi-language support
 - ADDED: Dutch and English language pack. 

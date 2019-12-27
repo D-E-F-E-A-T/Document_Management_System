@@ -6,6 +6,9 @@
 define("LANG_title", "DMS");
 define("LANG_footer", "DMS (Document Management System) by Bastiaan de hart");
 
+define("LANG_dashboard_heading", "Welcome");
+define("LANG_dashboard_paragraph", "DMS is made to keep note-taking simple, easy and really fast");
+
 define("LANG_NAV_dashboard", "Dashboard");
 define("LANG_NAV_notes", "Notes");
 define("LANG_NAV_profile", "Profile");
@@ -38,6 +41,8 @@ define("LANG_PROFILE_PASSWORD_heading", "Password change");
 define("LANG_PROFILE_PASSWORD_new_password", "New password right here");
 define("LANG_PROFILE_PASSWORD_new_password_repeat", "New password right here (repeat)");
 define("LANG_PROFILE_PASSWORD_new_password_btn", "Save");
+
+define("LANG_PROFILE_VIEW_heading", "Profile");
 
 define("LANG_404_heading", "404 Not found");
 define("LANG_404_paragraph", "Oops! Something is broken.");

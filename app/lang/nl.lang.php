@@ -6,6 +6,9 @@
 define("LANG_title", "DMS");
 define("LANG_footer", "DMS (Document Management System) door Bastiaan de hart");
 
+define("LANG_dashboard_heading", "Welkom");
+define("LANG_dashboard_paragraph", "Op het Document Management System kunt U nieuwe notities aanmaaken & bestaande bewerken. DMS is ontwikkeld om het maken & bewerken van documenten en notities makkelijk en snel te houden zonder ingewikkelde applicaties die er aan te pads komen");
+
 define("LANG_NAV_dashboard", "Dashboard");
 define("LANG_NAV_notes", "Notities");
 define("LANG_NAV_profile", "Profiel");
@@ -32,12 +35,14 @@ define("LANG_NOTES_EDIT_heading", "Bewerk notitie");
 define("LANG_NOTES_NEW_heading", "Nieuwe notitie");
 define("LANG_NOTES_NEW_title", "Titel");
 define("LANG_NOTES_NEW_note", "Notitie");
-define("LANG_NOTES_NEW_BTN_save", "Opslaam");
+define("LANG_NOTES_NEW_BTN_save", "Opslaan");
 
 define("LANG_PROFILE_PASSWORD_heading", "Wachtwoord wijziggen");
 define("LANG_PROFILE_PASSWORD_new_password", "Nieuw wachtwoord");
 define("LANG_PROFILE_PASSWORD_new_password_repeat", "Nieuw wachtwoord (repeat)");
 define("LANG_PROFILE_PASSWORD_new_password_btn", "Opslaan");
+
+define("LANG_PROFILE_VIEW_heading", "Profiel");
 
 define("LANG_404_heading", "404 Niet gevonden");
 define("LANG_404_paragraph", "Oops! Er is iets kappot.");

@@ -1,12 +1,19 @@
 <?php
 class Bootstrap {
-    public function addRow($rf) {
-        if($rf === "start") {
+    public function addRow($startStop) {
+        if($startStop === "start") {
             return '<div class="row">';
-        } elseif($rf === "end") {
+        } elseif($startStop === "end") {
             return '</div>';
         }
-        
+    } 
+
+    public function addFormRow($startStop) {
+        if($startStop === "start") {
+            return '<div class="form-row">';
+        } elseif($startStop === "end") {
+            return '</div>';
+        }
     } 
 
     public function addCard($title, $text, $hrefContent, $hrefUrl) {
@@ -15,8 +22,7 @@ class Bootstrap {
         $content .= '<div class="card-body">';
         $content .= '<h5 class="card-title">'. $title .'</h5>';
         $content .= '<p class="card-text">'. $text .'</p>';
-        // TODO: replace with function addButton()
-        $content .= '<a href="'. $hrefUrl .'" class="btn btn-primary">'. $hrefContent .'</a>';
+        $content .= $this->addButton("btn-primary", $hrefContent, $hrefUrl);
         $content .= '</div>';
         $content .= '</div>';
         $content .= '</div>';
@@ -24,31 +30,57 @@ class Bootstrap {
         return $content;
     }
 
+    public function addButtonSubmit($content) {
+        return '<button type="submit" class="btn btn-primary">'. $content .'</button></form>';
+    }
+
     public function addButton($style, $hrefContent, $hrefUrl) {
         $array = array("btn-primary", "btn-secondary", "btn-success", "btn-danger", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-link");
-
         if(in_array($style, $array)) { return '<a href="'. $hrefUrl .'" class="btn '. $style .'">'. $hrefContent .'</a>'; }
     }
 
     public function addButtonOutline($style, $hrefContent, $hrefUrl) {
         $array = array("btn-outline-primary", "btn-outline-secondary", "btn-outline-success", "btn-outline-danger", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-outline-link");
-
         if(in_array($style, $array)) { return '<a href="'. $hrefUrl .'" class="btn '. $style .'">'. $hrefContent .'</a>'; }
     }
 
-    public function addButtonGroup() {
-        return '<div class="btn-group" role="group">';
+    public function addButtonGroup($startStop) {
+        if($startStop === "start") {
+            return '<div class="btn-group" role="group">';
+        } elseif($startStop === "end") {
+            return '</div>';
+        }
     }
 
-    public function addFormField($inputType, $name, $placeholder) {
-        $content = '<div class="form-row">';
+    public function addFormField($inputType, $name, $placeholder, $value) {
+        $content = $this->addFormRow("start");
         $content .= '<div class="form-group col">';
         $content .= '<label for="'. $name .'">'. $placeholder .'</label>';
-        $content .= '<input type="'. $inputType .'" class="form-control" name="'. $name .'" id="'. $name .'" placeholder="'. $placeholder .'">';
+        $content .= '<input type="'. $inputType .'" class="form-control" name="'. $name .'" id="'. $name .'" placeholder="'. $placeholder .'" value="'. $value .'">';
         $content .= '</div>';
-        $content .= '</div>';
+        $content .= $this->addFormRow("end");
 
         return $content;
+    }
+
+    public function addTinyMCE($name, $placeholder, $value) {
+        $content = $this->addFormRow("start");
+        $content .= '<div class="form-group col"><label for="'. $name .'">'. $placeholder .'</label><textarea class="form-control" name="'. $name .'" id="'. $name .'">'. $value .'</textarea></div>';
+        $content .= $this->addFormRow("end");
+
+        return $content;
+    }
+
+    public function addNavigationItem($location, $title) {
+        return '<li class="nav-item"><a class="nav-link" href="index.php?page='. $location .'">'. $title .'</a></li>';
+    }
+
+    public function addDropdownItem($location, $title) {
+        return '<a class="dropdown-item" href="'. $location .'">'. $title .'</a>';
+    }
+
+    public function addDropdownSeperator() {
+        return '<div class="dropdown-divider"></div>';
     }
 
     // TODO: Add:

@@ -6,16 +6,11 @@ class DT {
         $this->format = $format;
     }
 
-    // FIXME: Adding right languages and formats
     public function get() {
-        if($this->format === "eu") {
-
-        } elseif($this->format === "iso") {
-
-        } elseif($this->format === "usa") {
-
-        } else {
+        if($this->format === "nl") {
             return date("H:i d-m-Y");
+        } else {
+            return date("H:i m-d-Y");
         }
     }
 }

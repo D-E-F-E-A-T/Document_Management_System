@@ -1,9 +1,9 @@
 <?php
 class Notes {
     public function viewNotes() {
-        global $mysql, $dateTime, $template, $b64;
+        global $mysql, $dateTime, $template, $b64, $bootstrap;
 
-        $query = $mysql->query("SELECT * FROM dms_note WHERE archive = 0");
+        $query = $mysql->query("SELECT * FROM dms_note WHERE archive = 0 ORDER BY dt_last_edit DESC");
         $content = '<table class="table">';
         $content .= '<thead><tr><th scope="col">#</th><th scope="col">'. LANG_NOTES_TABLE_title .'</th><th scope="col">'. LANG_NOTES_TABLE_lastedit .'</th><th scope="col">'. LANG_NOTES_TABLE_actions .'</th></tr></thead>';
         $content .= '<tbody>';
@@ -14,14 +14,12 @@ class Notes {
             $content .= '<td>' . htmlspecialchars($x["id"]) . '</td>';
             $content .= '<td>' . $b64->decode(htmlspecialchars($x["title"])) . '</td>';
             $content .= '<td>' . htmlspecialchars($x["dt_last_edit"]) . '</td>';
-
-            // TODO: Make bootstrap btn-group 
-            // TODO: Add button in new class for bootstrap parts
-            // TODO: Make TINYMCE class with options
-            $content .= "<td><div class='btn-group' role='group'>";
-            $content .= $template->addButton("index.php?page=notes&action=edit&id=" . htmlspecialchars($x["id"]), LANG_NOTES_TABLE_BTN_edit);
-            $content .= $template->addButton("index.php?page=notes&action=delete&id=" . htmlspecialchars($x["id"]), LANG_NOTES_TABLE_BTN_remove);
-            $content .= '</div></tr>';
+            $content .= "<td>";
+            $content .= $bootstrap->addButtonGroup("start");
+            $content .= $bootstrap->addButton("btn-primary", LANG_NOTES_TABLE_BTN_edit, "index.php?page=notes&action=edit&id=" . htmlspecialchars($x["id"]));
+            $content .= $bootstrap->addButtonOutline("btn-outline-primary", LANG_NOTES_TABLE_BTN_remove, "index.php?page=notes&action=delete&id=" . htmlspecialchars($x["id"]));
+            $content .= $bootstrap->addButtonGroup("end");
+            $content .= '</tr>';
         }
     
         $content .= '</tbody></table>';
@@ -30,14 +28,14 @@ class Notes {
     }
     
     public function makeNoteForm() {
+        global $bootstrap;
+
         $content = '<form action="" method="POST">';
-        $content .= '<div class="form-row">';
-        $content .= '<div class="form-group col"><label for="title">'. LANG_NOTES_NEW_title .'</label><input type="text" class="form-control" name="title" id="title" placeholder="'. LANG_NOTES_NEW_title .'"></div>';
-        $content .= '</div>';
+        $content .= $bootstrap->addFormField("text", "title", LANG_NOTES_NEW_title, "");
         $content .= '<div class="form-row">';
         $content .= '<div class="form-group col"><label for="note">'. LANG_NOTES_NEW_note .'</label><textarea class="form-control" name="note" id="note"></textarea></div>';
         $content .= '</div>';
-        $content .= '<button type="submit" class="btn btn-primary">'. LANG_NOTES_NEW_BTN_save .'</button></form>';
+        $content .= $bootstrap->addButtonSubmit(LANG_NOTES_NEW_BTN_save);
         
         return $content;
     } 
@@ -53,25 +51,19 @@ class Notes {
     }
 
     public function editNoteForm($id) {
-        global $mysql, $dateTime, $b64;
+        global $mysql, $dateTime, $b64, $bootstrap;
 
         $query = $mysql->query("SELECT * FROM dms_note WHERE id = '{$id}'");
         $content = '<form action="" method="POST">';
 
         while($x = mysqli_fetch_assoc($query)) {
-            $noteEncoded = $b64->decode(htmlspecialchars($x["content"]));
-            $titleEncoded = $b64->decode(htmlspecialchars($x["title"]));
-
-            $content .= '<div class="form-row">';
-            $content .= '<div class="form-group col"><label for="title">'. LANG_NOTES_NEW_title .'</label><input type="text" class="form-control" name="title" id="title" placeholder="'. LANG_NOTES_NEW_title .'" value="'. $titleEncoded .'"></div>';
-            $content .= '</div>';
-
-            $content .= '<div class="form-row">';
-            $content .= '<div class="form-group col"><label for="note">'. LANG_NOTES_NEW_note .'</label><textarea class="form-control" name="note" id="note">'. $noteEncoded .'</textarea></div>';
-            $content .= '</div>';
+            $noteEncoded    = $b64->decode(htmlspecialchars($x["content"]));
+            $titleEncoded   = $b64->decode(htmlspecialchars($x["title"]));
+            $content .= $bootstrap->addFormField("text", "title", LANG_NOTES_NEW_title, $titleEncoded);
+            $content .= $bootstrap->addTinyMCE("note", LANG_NOTES_NEW_note, $noteEncoded);
         }
-        // TODO: bootstrAP btn 
-        $content .= '<button type="submit" class="btn btn-primary">'. LANG_NOTES_NEW_BTN_save .'</button></form>';
+
+        $content .= $bootstrap->addButtonSubmit(LANG_NOTES_NEW_BTN_save);
         return $content;
     }
 

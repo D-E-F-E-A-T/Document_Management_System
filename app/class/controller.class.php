@@ -1,15 +1,10 @@
 <?php
 class Controller {
-    private $path;
-
-    public function __construct() {
-        $this->path = 'app/controller/';
-    }
 
     public function load($filename) {
-        global $template, $notes, $todos, $user, $profile, $bootstrap;
+        global $template, $notes, $lang, $user, $profile, $bootstrap, $path;
         
-        return include $this->path . $filename . '.con.php';
+        return include $path->getPath("controller") . $filename . '.con.php';
     }
 }
 ?>
