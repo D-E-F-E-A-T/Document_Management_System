@@ -32,7 +32,7 @@ class Template {
     public function loadheader() {
         $content = '<header>';
         $content .= '<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">';
-        $content .= '<span class="navbar-brand mb-0 h1"><img src="app/assets/img/icon.svg" width="30" height="30" class="d-inline-block align-top" alt=""> DMS</span>';
+        $content .= '<span class="navbar-brand mb-0 h1"><img src="app/assets/img/icon.svg" width="30" height="30" class="d-inline-block align-top" alt=""> '. LANG_title .'</span>';
 
         $content .= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">';
         $content .= '<span class="navbar-toggler-icon"></span>';
@@ -41,18 +41,18 @@ class Template {
         $content .= '<div class="collapse navbar-collapse" id="navbarCollapse">';
 
         $content .= '<ul class="navbar-nav mr-auto">';
-        $content .= $this->addNavigationItem("dashboard", "Home");
-        $content .= $this->addNavigationItem("notes&action=view", "Notes");
+        $content .= $this->addNavigationItem("dashboard", LANG_NAV_dashboard);
+        $content .= $this->addNavigationItem("notes&action=view", LANG_NAV_notes);
         $content .= '</ul>';
 
         //$content .= '<li class="nav-item dropdown">';
         $content .= '<a class="btn btn-outline-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'. $_SESSION["dms_user_realname"] .'</a>';
         
         $content .= '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">';
-        $content .= $this->addDropdownItem("index.php?page=profile&action=view", "Profiel");
-        $content .= $this->addDropdownItem("index.php?page=profile&action=password", "Wachtwoord Wijziggen");
+        $content .= $this->addDropdownItem("index.php?page=profile&action=view", LANG_NAV_profile);
+        $content .= $this->addDropdownItem("index.php?page=profile&action=password", LANG_NAV_password);
         $content .= $this->addDropdownSeperator();
-        $content .= $this->addDropdownItem("sign-out.php", "Uitloggen");
+        $content .= $this->addDropdownItem("sign-out.php", LANG_NAV_sign_out);
         $content .= '</div>';
 
         //$content .= '</li>';
@@ -69,7 +69,7 @@ class Template {
 
     public function loadFooter() {
         $content = '<footer class="footer">';
-        $content .= '<div class="container"><span class="text-muted">DMS (Document Management System) by Bastiaan de hart</span></div>';
+        $content .= '<div class="container"><span class="text-muted">'. LANG_footer .'</span></div>';
         $content .= '</footer>';
         $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js");
         $content .= $this->addJS(false, "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js");
@@ -80,12 +80,12 @@ class Template {
 
     public function loadLoginForm() {
         $content = '<form action="" method="POST" class="form-signin">';
-        $content .= '<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>';
-        $content .= '<label for="username" class="sr-only">Email address</label>';
-        $content .= '<input type="text" name="username" id="username" class="form-control" placeholder="Email address" required autofocus>';
-        $content .= '<label for="password" class="sr-only">Password</label>';
-        $content .= '<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>';
-        $content .= '<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>';
+        $content .= '<h1 class="h3 mb-3 font-weight-normal">'. LANG_SIGNIN_title .'</h1>';
+        $content .= '<label for="username" class="sr-only">'. LANG_SIGNIN_username .'</label>';
+        $content .= '<input type="text" name="username" id="username" class="form-control" placeholder="'. LANG_SIGNIN_username .'" required autofocus>';
+        $content .= '<label for="password" class="sr-only">'. LANG_SIGNIN_password .'</label>';
+        $content .= '<input type="password" name="password" id="password" class="form-control" placeholder="'. LANG_SIGNIN_password .'" required>';
+        $content .= '<button class="btn btn-lg btn-primary btn-block" type="submit">'. LANG_SIGNIN_button .'</button>';
         $content .= '</form>';
 
         return $content;

@@ -1,2 +1,2 @@
-<?php echo $template->addTitle("404 Not found"); ?>
-<p>Oops! Something is broken.</p>
+<?php echo $template->addTitle(LANG_404_heading); ?>
+<?php echo '<p>'. LANG_404_paragraph .'</p>';

@@ -27,7 +27,7 @@ class User {
     }
 
     public function loginError() {
-        return '<script>alert("Username or password is incorrect.");</script>';
+        return '<script>alert("'. LANG_SIGNIN_error .'");</script>';
     }
 
     public function loginCorrect() {

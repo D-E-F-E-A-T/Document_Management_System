@@ -5,7 +5,7 @@ class Notes {
 
         $query = $mysql->query("SELECT * FROM dms_note WHERE archive = 0");
         $content = '<table class="table">';
-        $content .= '<thead><tr><th scope="col">#</th><th scope="col">Title</th><th scope="col">Last edit</th><th scope="col">Actions</th></tr></thead>';
+        $content .= '<thead><tr><th scope="col">#</th><th scope="col">'. LANG_NOTES_TABLE_title .'</th><th scope="col">'. LANG_NOTES_TABLE_lastedit .'</th><th scope="col">'. LANG_NOTES_TABLE_actions .'</th></tr></thead>';
         $content .= '<tbody>';
 
         while($x = mysqli_fetch_assoc($query)) {
@@ -19,8 +19,8 @@ class Notes {
             // TODO: Add button in new class for bootstrap parts
             // TODO: Make TINYMCE class with options
             $content .= "<td><div class='btn-group' role='group'>";
-            $content .= $template->addButton("index.php?page=notes&action=edit&id=" . htmlspecialchars($x["id"]), "Edit");
-            $content .= $template->addButton("index.php?page=notes&action=delete&id=" . htmlspecialchars($x["id"]), "Remove");
+            $content .= $template->addButton("index.php?page=notes&action=edit&id=" . htmlspecialchars($x["id"]), LANG_NOTES_TABLE_BTN_edit);
+            $content .= $template->addButton("index.php?page=notes&action=delete&id=" . htmlspecialchars($x["id"]), LANG_NOTES_TABLE_BTN_remove);
             $content .= '</div></tr>';
         }
     
@@ -32,12 +32,12 @@ class Notes {
     public function makeNoteForm() {
         $content = '<form action="" method="POST">';
         $content .= '<div class="form-row">';
-        $content .= '<div class="form-group col"><label for="title">Title</label><input type="text" class="form-control" name="title" id="title" placeholder="Title"></div>';
+        $content .= '<div class="form-group col"><label for="title">'. LANG_NOTES_NEW_title .'</label><input type="text" class="form-control" name="title" id="title" placeholder="'. LANG_NOTES_NEW_title .'"></div>';
         $content .= '</div>';
         $content .= '<div class="form-row">';
-        $content .= '<div class="form-group col"><label for="note">Note</label><textarea class="form-control" name="note" id="note"></textarea></div>';
+        $content .= '<div class="form-group col"><label for="note">'. LANG_NOTES_NEW_note .'</label><textarea class="form-control" name="note" id="note"></textarea></div>';
         $content .= '</div>';
-        $content .= '<button type="submit" class="btn btn-primary">Toevoegen</button></form>';
+        $content .= '<button type="submit" class="btn btn-primary">'. LANG_NOTES_NEW_BTN_save .'</button></form>';
         
         return $content;
     } 
@@ -63,15 +63,15 @@ class Notes {
             $titleEncoded = $b64->decode(htmlspecialchars($x["title"]));
 
             $content .= '<div class="form-row">';
-            $content .= '<div class="form-group col"><label for="title">Title</label><input type="text" class="form-control" name="title" id="title" placeholder="Title" value="'. $titleEncoded .'"></div>';
+            $content .= '<div class="form-group col"><label for="title">'. LANG_NOTES_NEW_title .'</label><input type="text" class="form-control" name="title" id="title" placeholder="'. LANG_NOTES_NEW_title .'" value="'. $titleEncoded .'"></div>';
             $content .= '</div>';
 
             $content .= '<div class="form-row">';
-            $content .= '<div class="form-group col"><label for="note">Note</label><textarea class="form-control" name="note" id="note">'. $noteEncoded .'</textarea></div>';
+            $content .= '<div class="form-group col"><label for="note">'. LANG_NOTES_NEW_note .'</label><textarea class="form-control" name="note" id="note">'. $noteEncoded .'</textarea></div>';
             $content .= '</div>';
         }
         // TODO: bootstrAP btn 
-        $content .= '<button type="submit" class="btn btn-primary">Save</button></form>';
+        $content .= '<button type="submit" class="btn btn-primary">'. LANG_NOTES_NEW_BTN_save .'</button></form>';
         return $content;
     }
 

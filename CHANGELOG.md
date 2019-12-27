@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Version: 0.0.4
+- ADDED: Multi-language support
+- ADDED: Dutch and English language pack. 
+
 ## Version: 0.0.3
 - ADDED: Working the Base64 encoding & decoding out. The reason for Base64 is because of HTML elements are not always well inserted into the MySQL database.
 - ADDED: Sass style files for easier making changes

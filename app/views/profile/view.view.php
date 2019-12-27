@@ -1,3 +1,4 @@
+<?php // TODO: Translations ?>
 <?php echo $template->addTitle("Profile: " . "Bastiaan de Hart"); ?>
 <?php echo $bootstrap->addRow("start"); ?>
 <?php echo $bootstrap->addCard("Change password", "Do you want to change you password?", "Change password", "index.php?page=profile&action=password"); ?>
