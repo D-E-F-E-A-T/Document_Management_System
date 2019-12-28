@@ -16,14 +16,41 @@ class Bootstrap {
         }
     } 
 
+    public function addCardCol($startStop) {
+        if($startStop === "start") {
+            return '<div class="card-columns">';
+        } elseif($startStop === "end") {
+            return '</div>';
+        }
+    }
+    
+    public function addButtonGroup($startStop) {
+        if($startStop === "start") {
+            return '<div class="btn-group" role="group">';
+        } elseif($startStop === "end") {
+            return '</div>';
+        }
+    }
+
     public function addCard($title, $text, $hrefContent, $hrefUrl) {
-        $content = '<div class="col-sm-6">';
+        $content = '<div style="margin-bottom: 10px;" class="col-sm-6">';
         $content .= '<div class="card">';
         $content .= '<div class="card-body">';
         $content .= '<h5 class="card-title">'. $title .'</h5>';
         $content .= '<p class="card-text">'. $text .'</p>';
         $content .= $this->addButton("btn-primary", $hrefContent, $hrefUrl);
         $content .= '</div>';
+        $content .= '</div>';
+        $content .= '</div>';
+
+        return $content;
+    }
+
+    public function addWidget($title, $text) {
+        $content = '<div class="card">';
+        $content .= '<div class="card-body">';
+        $content .= '<h5 class="card-title">'. $title .'</h5>';
+        $content .= '<p class="card-text">'. $text .'</p>';
         $content .= '</div>';
         $content .= '</div>';
 
@@ -42,14 +69,6 @@ class Bootstrap {
     public function addButtonOutline($style, $hrefContent, $hrefUrl) {
         $array = array("btn-outline-primary", "btn-outline-secondary", "btn-outline-success", "btn-outline-danger", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-outline-link");
         if(in_array($style, $array)) { return '<a href="'. $hrefUrl .'" class="btn '. $style .'">'. $hrefContent .'</a>'; }
-    }
-
-    public function addButtonGroup($startStop) {
-        if($startStop === "start") {
-            return '<div class="btn-group" role="group">';
-        } elseif($startStop === "end") {
-            return '</div>';
-        }
     }
 
     public function addFormField($inputType, $name, $placeholder, $value) {

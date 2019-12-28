@@ -11,11 +11,10 @@ if(isset($_GET["page"]) && !empty($_GET["page"])) {
 
     } else if($_GET["page"] === "notes") {
         include "app/routes/notes.php";
-
     } else if($_GET["page"] === "profile") {
         include "app/routes/profile.php";
-        
     } else {
+
         $views->load("global/head");
         $views->load("global/404");
         $views->load("global/footer");

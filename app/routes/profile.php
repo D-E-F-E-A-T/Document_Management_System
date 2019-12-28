@@ -9,11 +9,23 @@ if(isset($_GET["action"]) && !empty($_GET["action"])) {
     } else if($_GET["action"] === "password") {
 
         $controller->load("profile/password");
-
         $views->load("global/head");
         $views->load("profile/password");
         $views->load("global/footer");
 
+    } else if($_GET["action"] === "log") {
+
+        $controller->load("profile/log");
+        $views->load("global/head");
+        $views->load("profile/log");
+        $views->load("global/footer");
+        
+    } else if($_GET["action"] === "db") {
+
+        $controller->load("profile/db");
+        $views->load("global/head");
+        $views->load("profile/db");
+        $views->load("global/footer");
 
     } else {
         $views->load("global/head");

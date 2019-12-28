@@ -29,4 +29,6 @@ $bootstrap      = new Bootstrap();
 $dateTime       = new DT($language);
 $b64            = new Base64();
 $lang           = new Language($language);
+$dashboard      = new Dashboard();
+$logs           = new Log();
 ?>

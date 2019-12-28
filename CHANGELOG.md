@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Version: 0.0.7
+- ADDED: Widgets on dashboard
+- ADDED: Security log view page
+- ADDED: Solution to remove all archived notes
+- FIX: Different code improvements
+- FIX: Translations faults
+
 ## Version: 0.0.6
 - FIX: Issue with a wrong database.sql file
 
@@ -8,7 +15,7 @@ All notable changes to this project will be documented in this file.
 - FIX: Date Time formats
 - FIX: Dutch translations
 - FIX: Safely removed the $language from the templace.class.php file. This variable was needed in v0.0.1 but now we're working with the language class
-- ADDED: Path cladss for easier managing paths on the server.
+- ADDED: Path class for easier managing paths on the server.
 - ADDED: Final version of the DATABASE
 - UPDATED: README.md
 
@@ -27,7 +34,7 @@ All notable changes to this project will be documented in this file.
 - ADDED: Label right-top with the name of the current user
 - ADDED: code is prepared for building a admin-console around it
 - ADDED: Password change
-- FIX: Rewrited the code with function name "addJS" & "addCSS", now a boolean is required to let the script know if its a local file or a file hosted on a CDN
+- FIX: rewrote the code with function name "addJS" & "addCSS", now a boolean is required to let the script know if its a local file or a file hosted on a CDN
 - FIX: Login verify issues. Added two new pages "sign-in.php" and "sign-out.php"
 
 ## Version: 0.0.1
