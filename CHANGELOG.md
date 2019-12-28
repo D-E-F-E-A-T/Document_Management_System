@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Version: 0.0.8
+- ADDED: Color settings, this changes all accent colors in the website
+- UPDATED: Database.sql file
+- FIX: Finishing toutches
+
 ## Version: 0.0.7
 - ADDED: Widgets on dashboard
 - ADDED: Security log view page
@@ -14,7 +19,7 @@ All notable changes to this project will be documented in this file.
 ## Version: 0.0.5
 - FIX: Date Time formats
 - FIX: Dutch translations
-- FIX: Safely removed the $language from the templace.class.php file. This variable was needed in v0.0.1 but now we're working with the language class
+- FIX: Safely removed the $language from the template.class.php file. This variable was needed in v0.0.1 but now we're working with the language class
 - ADDED: Path class for easier managing paths on the server.
 - ADDED: Final version of the DATABASE
 - UPDATED: README.md
@@ -34,7 +39,7 @@ All notable changes to this project will be documented in this file.
 - ADDED: Label right-top with the name of the current user
 - ADDED: code is prepared for building a admin-console around it
 - ADDED: Password change
-- FIX: rewrote the code with function name "addJS" & "addCSS", now a boolean is required to let the script know if its a local file or a file hosted on a CDN
+- FIX: Rewrote the code with function name "addJS" & "addCSS", now a boolean is required to let the script know if its a local file or a file hosted on a CDN
 - FIX: Login verify issues. Added two new pages "sign-in.php" and "sign-out.php"
 
 ## Version: 0.0.1

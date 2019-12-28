@@ -32,8 +32,6 @@ define("LANG_PROFILE_PASSWORD_sub", "Do you want to change your password? Thats 
 define("LANG_PROFILE_PASSWORD_new_password", "New password right here");
 define("LANG_PROFILE_PASSWORD_new_password_repeat", "New password right here (repeat)");
 define("LANG_PROFILE_PASSWORD_new_password_btn", "Save");
-define("LANG_PROFILE_EDIT_heading", "Edit your profile");
-define("LANG_PROFILE_EDIT_sub", "Do you want to edit your profile? Thats possible right here");
 define("LANG_PROFILE_LOG_heading", "Security logs");
 define("LANG_PROFILE_LOG_sub", "Knowing everyone that tried to sign-in?");
 define("LANG_PROFILE_LOG_btn", "Delete");
@@ -42,6 +40,8 @@ define("LANG_PROFILE_LOG_TABLE_ua", "User agent");
 define("LANG_PROFILE_LOG_TABLE_username", "Username");
 define("LANG_PROFILE_LOG_TABLE_date", "Date & time");
 define("LANG_PROFILE_CLEANDB_heading", "Database clean");
+define("LANG_PROFILE_CLEANDB_btn", "Clean");
+define("LANG_PROFILE_CLEANDB_sure", "Are you sure, you want to remove all archived posts?");
 define("LANG_PROFILE_CLEANDB_sub", "If you think the MySQL database is a little bit messy you can clean this up right here");
 define("LANG_PROFILE_SYSTEM_heading", "System settings");
 define("LANG_PROFILE_SYSTEM_sub", "Changing system settings");
@@ -57,6 +57,8 @@ define("LANG_DASHBOARD_WIDGET_04_heading", "Notes");
 define("LANG_DASHBOARD_WIDGET_04_content", "The number of notes you saved is: ");
 define("LANG_DASHBOARD_WIDGET_05_heading", "Random joke");
 define("LANG_DASHBOARD_WIDGET_06_heading", "Your location");
-
-
+define("LANG_PROFILE_SETTINGS_heading", "Settings");
+define("LANG_PROFILE_SETTINGS_paragraph", "In the input form downhere you can fill a hexadicimal color");
+define("LANG_PROFILE_SETTINGS_btn", "Save");
+define("LANG_PROFILE_SETTINGS_input", "Color")
 ?>

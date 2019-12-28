@@ -1,5 +1,4 @@
-<?php echo $template->addTitle(LANG_dashboard_heading); ?>
-<?php echo "<p>". LANG_dashboard_paragraph ."</p>"; ?>
+<?php echo $bootstrap->addJumbotron(LANG_dashboard_heading, LANG_dashboard_paragraph); ?>
 <?php echo $bootstrap->addCardCol("start"); ?>
 <?php echo $bootstrap->addWidget(LANG_DASHBOARD_WIDGET_01_heading, LANG_DASHBOARD_WIDGET_01_content); ?>
 <?php echo $bootstrap->addWidget(LANG_DASHBOARD_WIDGET_02_heading, LANG_DASHBOARD_WIDGET_02_content . $dashboard->getWeather()); ?>

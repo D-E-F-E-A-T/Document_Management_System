@@ -102,16 +102,20 @@ class Bootstrap {
         return '<div class="dropdown-divider"></div>';
     }
 
-    // TODO: Add:
-    // https://getbootstrap.com/docs/4.1/components/card/
-    // https://getbootstrap.com/docs/4.1/components/dropdowns/
-    // https://getbootstrap.com/docs/4.1/components/forms/
-    // https://getbootstrap.com/docs/4.1/components/jumbotron/
-    // 
+    // <?php echo $bootstrap->addParagraph();
+    public function addParagraph($content) {
+        return "<p>". $content ."</p>";
+    }
 
-    // TODO: Default P tag markup https://getbootstrap.com/docs/4.1/utilities/colors/
-    // IDEA: Meten van het aantal woorden of tekens? https://getbootstrap.com/docs/4.1/components/progress/
-    // TODO LOGIN ALERT: https://getbootstrap.com/docs/4.1/components/modal/
+    public function addJumbotron($title, $text) {
+        $content = '<div class="jumbotron jumbotron-fluid">';
+        $content .= '<div class="container">';
+        $content .= '<h1 class="display-4">'. $title .'</h1>';
+        $content .= '<p class="lead">'. $text .'</p>';
+        $content .= '</div>';
+        $content .= '</div>';
 
-
+        return $content;
+    }
 }
+?>

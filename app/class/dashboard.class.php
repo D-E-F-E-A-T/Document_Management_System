@@ -3,7 +3,7 @@ class Dashboard {
     public function getWeather() {
         // TODO: Creating this method
         // http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|NL|NL007|DRUNEN
-        return "Currently: Partly Cloudy: 0C";
+        return "0 C";
     }
 
     public function getFact() {

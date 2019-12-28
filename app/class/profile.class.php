@@ -1,22 +1,8 @@
 <?php
 class Profile {
 
-    // TODO
-    public function getProfile($uid) {
-
-    }
-    // TODO: Edit profile
-    // MUSTHAVE: Naam veranderen & email
-    public function editProfileForm($uid) {
-
-    }
-
-    public function editProfileSave($uid) {
-
-    }
-
     public function passwordChange($username, $passwordCurrent, $passwordNew, $passwordNewRepeat) {
-        // TODO: Building function
+        // TODO: Finishing function
         global $mysql, $user;
         $hasedPassword = $user->passwordHash($passwordNew);
 

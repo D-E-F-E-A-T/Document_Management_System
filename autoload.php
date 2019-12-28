@@ -31,4 +31,5 @@ $b64            = new Base64();
 $lang           = new Language($language);
 $dashboard      = new Dashboard();
 $logs           = new Log();
+$settings       = new Settings();
 ?>

@@ -27,6 +27,13 @@ if(isset($_GET["action"]) && !empty($_GET["action"])) {
         $views->load("profile/db");
         $views->load("global/footer");
 
+    } else if($_GET["action"] === "settings") {
+
+        $controller->load("profile/settings");
+        $views->load("global/head");
+        $views->load("profile/settings");
+        $views->load("global/footer");
+
     } else {
         $views->load("global/head");
         $views->load("global/404");
