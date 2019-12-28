@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Version: 0.0.6
+- FIX: Issue with a wrong database.sql file
+
 ## Version: 0.0.5
 - FIX: Date Time formats
 - FIX: Dutch translations
