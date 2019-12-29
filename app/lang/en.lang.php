@@ -4,7 +4,10 @@
 define("LANG_title", "DMS");
 define("LANG_footer", "DMS (Document Management System) by Bastiaan de hart");
 define("LANG_dashboard_heading", "Welcome");
-define("LANG_dashboard_paragraph", "DMS is made to keep note-taking simple, easy and really fast");
+define(
+    "LANG_dashboard_paragraph",
+    "DMS is made to keep note-taking simple, easy and really fast"
+);
 define("LANG_NAV_dashboard", "Dashboard");
 define("LANG_NAV_notes", "Notes");
 define("LANG_NAV_profile", "Profile");
@@ -28,9 +31,15 @@ define("LANG_NOTES_NEW_title", "Title");
 define("LANG_NOTES_NEW_note", "Note");
 define("LANG_NOTES_NEW_BTN_save", "Save");
 define("LANG_PROFILE_PASSWORD_heading", "Password change");
-define("LANG_PROFILE_PASSWORD_sub", "Do you want to change your password? Thats possible right here");
+define(
+    "LANG_PROFILE_PASSWORD_sub",
+    "Do you want to change your password? Thats possible right here"
+);
 define("LANG_PROFILE_PASSWORD_new_password", "New password right here");
-define("LANG_PROFILE_PASSWORD_new_password_repeat", "New password right here (repeat)");
+define(
+    "LANG_PROFILE_PASSWORD_new_password_repeat",
+    "New password right here (repeat)"
+);
 define("LANG_PROFILE_PASSWORD_new_password_btn", "Save");
 define("LANG_PROFILE_LOG_heading", "Security logs");
 define("LANG_PROFILE_LOG_sub", "Knowing everyone that tried to sign-in?");
@@ -41,24 +50,39 @@ define("LANG_PROFILE_LOG_TABLE_username", "Username");
 define("LANG_PROFILE_LOG_TABLE_date", "Date & time");
 define("LANG_PROFILE_CLEANDB_heading", "Database clean");
 define("LANG_PROFILE_CLEANDB_btn", "Clean");
-define("LANG_PROFILE_CLEANDB_sure", "Are you sure, you want to remove all archived posts?");
-define("LANG_PROFILE_CLEANDB_sub", "If you think the MySQL database is a little bit messy you can clean this up right here");
+define(
+    "LANG_PROFILE_CLEANDB_sure",
+    "Are you sure, you want to remove all archived posts?"
+);
+define(
+    "LANG_PROFILE_CLEANDB_sub",
+    "If you think the MySQL database is a little bit messy you can clean this up right here"
+);
 define("LANG_PROFILE_SYSTEM_heading", "System settings");
 define("LANG_PROFILE_SYSTEM_sub", "Changing system settings");
 define("LANG_PROFILE_VIEW_heading", "Profile");
 define("LANG_404_heading", "404 Not found");
 define("LANG_404_paragraph", "Oops! Something is broken.");
 define("LANG_DASHBOARD_WIDGET_01_heading", "Personalize");
-define("LANG_DASHBOARD_WIDGET_01_content", "Did you know that you can change the color of the header? Awesome right?");
+define(
+    "LANG_DASHBOARD_WIDGET_01_content",
+    "Did you know that you can change the color of the header? Awesome right?"
+);
 define("LANG_DASHBOARD_WIDGET_02_heading", "Weather");
 define("LANG_DASHBOARD_WIDGET_02_content", "Current weather: ");
 define("LANG_DASHBOARD_WIDGET_03_heading", "Fact of the day");
 define("LANG_DASHBOARD_WIDGET_04_heading", "Notes");
-define("LANG_DASHBOARD_WIDGET_04_content", "The number of notes you saved is: ");
+define(
+    "LANG_DASHBOARD_WIDGET_04_content",
+    "The number of notes you saved is: "
+);
 define("LANG_DASHBOARD_WIDGET_05_heading", "Random joke");
 define("LANG_DASHBOARD_WIDGET_06_heading", "Your location");
 define("LANG_PROFILE_SETTINGS_heading", "Settings");
-define("LANG_PROFILE_SETTINGS_paragraph", "In the input form downhere you can fill a hexadicimal color");
+define(
+    "LANG_PROFILE_SETTINGS_paragraph",
+    "In the input form downhere you can fill a hexadicimal color"
+);
 define("LANG_PROFILE_SETTINGS_btn", "Save");
-define("LANG_PROFILE_SETTINGS_input", "Color")
+define("LANG_PROFILE_SETTINGS_input", "Color");
 ?>

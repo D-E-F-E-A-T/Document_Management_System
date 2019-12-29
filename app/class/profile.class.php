@@ -1,13 +1,24 @@
 <?php
-class Profile {
-
-    public function passwordChange($username, $passwordCurrent, $passwordNew, $passwordNewRepeat) {
+class Profile
+{
+    public function passwordChange(
+        $username,
+        $passwordCurrent,
+        $passwordNew,
+        $passwordNewRepeat
+    ) {
         // TODO: Finishing function
         global $mysql, $user;
         $hasedPassword = $user->passwordHash($passwordNew);
 
-        if($passwordNew == $passwordNewRepeat) {
-            $mysql->query("UPDATE dms_users SET password = '" . $hasedPassword . "' WHERE username = '" . $username . "'");
+        if ($passwordNew == $passwordNewRepeat) {
+            $mysql->query(
+                "UPDATE dms_users SET password = '" .
+                    $hasedPassword .
+                    "' WHERE username = '" .
+                    $username .
+                    "'"
+            );
             // TODO: Translations
             return "Password changed";
         } else {
@@ -16,17 +27,30 @@ class Profile {
         }
     }
 
-    public function passwordChangeForm() {
+    public function passwordChangeForm()
+    {
         global $bootstrap;
 
         $content = '<form action="" method="POST">';
         $content .= $bootstrap->addFormRow("start");
-        $content .= '<div class="form-group col"><label for="new_password_1">'. LANG_PROFILE_PASSWORD_new_password .'</label><input type="password" class="form-control" name="new_password_1" id="new_password_1" placeholder="'. LANG_PROFILE_PASSWORD_new_password .'"></div>';
+        $content .=
+            '<div class="form-group col"><label for="new_password_1">' .
+            LANG_PROFILE_PASSWORD_new_password .
+            '</label><input type="password" class="form-control" name="new_password_1" id="new_password_1" placeholder="' .
+            LANG_PROFILE_PASSWORD_new_password .
+            '"></div>';
         $content .= $bootstrap->addFormRow("end");
         $content .= $bootstrap->addFormRow("start");
-        $content .= '<div class="form-group col"><label for="new_password_2">'. LANG_PROFILE_PASSWORD_new_password_repeat .'</label><input type="password" class="form-control" name="new_password_2" id="new_password_2" placeholder="'. LANG_PROFILE_PASSWORD_new_password_repeat .'"></div>';
+        $content .=
+            '<div class="form-group col"><label for="new_password_2">' .
+            LANG_PROFILE_PASSWORD_new_password_repeat .
+            '</label><input type="password" class="form-control" name="new_password_2" id="new_password_2" placeholder="' .
+            LANG_PROFILE_PASSWORD_new_password_repeat .
+            '"></div>';
         $content .= $bootstrap->addFormRow("end");
-        $content .= $bootstrap->addButtonSubmit(LANG_PROFILE_PASSWORD_new_password_btn);
+        $content .= $bootstrap->addButtonSubmit(
+            LANG_PROFILE_PASSWORD_new_password_btn
+        );
         return $content;
     }
 }
