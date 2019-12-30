@@ -6,7 +6,7 @@ $mysqlUsername = "root";
 $mysqlPassword = "root";
 $mysqlDatabase = "notes";
 
-$language = "nl";
+$language = "en";
 
 if ($debug === true) {
     ini_set('display_errors', 1);

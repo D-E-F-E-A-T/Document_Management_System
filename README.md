@@ -1,5 +1,16 @@
 # Document_Management_System
 
+## Screenshots
+
+![Screenshot 1](doc/01.png "Screenshot 1")
+![Screenshot 2](doc/02.png "Screenshot 2")
+![Screenshot 3](doc/03.png "Screenshot 3")
+![Screenshot 4](doc/04.png "Screenshot 4")
+
+## Changelog
+
+[View changelog](CHANGELOg.md)
+
 ## Install
 
 1. Create a database and define this in "autoload.php"

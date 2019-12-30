@@ -1,2 +1,2 @@
 #!/bin/bash
-prettier --write '**/*.{scss,css,php,md}'
+prettier --write '**/*.{scss,php,md}'

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.1
+
+- FIX: Bug that the delete function not worked correctly.
+- ADDED: Screenshots (REAMDE.md)
+
 ## Version: 1.0
 
 - Just the first public release
