@@ -9,7 +9,7 @@
 
 ## Changelog
 
-[View changelog](CHANGELOg.md)
+[View changelog](CHANGELOG.md)
 
 ## Install
 
